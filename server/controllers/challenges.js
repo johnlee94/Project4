@@ -1,8 +1,7 @@
-var Challenge = require('../models/Challenge'),
-    passport = require('passport')
+var Challenge = require('../models/Challenge')
 
 module.exports = {
-  newChallenge: newChallenge,
+  createChallenge: createChallenge,
   deleteChallenge: deleteChallenge,
   getChallenges: getChallenges,
   getChallenge: getChallenge,
@@ -10,58 +9,62 @@ module.exports = {
 }
 
 // GET all players (json)
-function getPlayers(req, res) {
-  Player.find(function(err, players) {
+function getChallenges(req, res) {
+  Challenge.find(function(err, challenges) {
     if (err) res.json({message: 'No players found currently'})
 
-    res.json({players: players})
+    res.json({challenges: challenges})
   })
 }
 
-function createPlayer(req, res) {
-  var player = new Player(req.body)
+function createChallenge(req, res) {
+  var challenge = new Challenge(req.body)
 
-  player.save(function(err) {
+  challenge.save(function(err) {
     if (err) throw err
 
-    res.json({player: player})
+    res.json({challenge: challenge})
   })
 }
 
-function getPlayer(req, res) {
+function getChallenge(req, res) {
   var id = req.params.id
 
-  Player.find({_id: id}, function(err, player) {
+  Challenge.find({_id: id}, function(err, challenge) {
     if(err) throw err
 
-    res.json({player: player})
+    res.json({challenge: challenge})
   })
 }
 
-function updatePlayer(req, res) {
+function updateChallenge(req, res) {
   var id = req.params.id
 
-  Player.find({_id: id}, function(err, player) {
+  Player.find({_id: id}, function(err, challenge) {
     if (err) throw error
 
-    player.name = req.body.name
-    player.age = req.body.age
-    player.team = req.body.team
-    player.role = req.body.role
-    player.hero = req.body.hero
+    challenge.title = req.body.title
+    challenge.menu = req.body.menu
+    challenge.featured_items = req.body.featured_items
+    challenge.additional_comments = req.body.additional_comments
+    challenge.public = req.body.public
+    challenge.zip = req.body.zip
+    challenge.location = req.body.location
+    challenge.price_level = req.body.price_level
+    challenge.hours = req.body.hours
 
-    player.save(function(err) {
+    challenge.save(function(err) {
       if (err) throw err
 
-      res.json({president: president})
+      res.json({challenge: challenge})
     })
   })
 }
 
-function removePlayer(req, res) {
+function deleteChallenge(req, res) {
   var id = req.params.id
 
-  Player.remove({_id: id}, function(err) {
+  Challenge.remove({_id: id}, function(err) {
     if (err) throw err
 
     res.json({message: 'succesfully deleted'})

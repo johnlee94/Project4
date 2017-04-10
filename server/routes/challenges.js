@@ -1,18 +1,15 @@
 const
   express = require('express'),
   challengeRouter = express.Router(),
-  {signUp, login, logout, status} = require('../controllers/challenges.js')
+  {createChallenge, deleteChallenge, getChallenges, getChallenge, updateChallenge} = require('../controllers/challenges.js')
 
-module.exports = userRouter
+module.exports = challengeRouter
 
-userRouter.route('/signup')
-  .post(signUp)
+challengeRouter.route('/')
+  .get(getChallenges)
+  .post(createChallenge)
 
-userRouter.route('/login')
-  .post(login)
-
-userRouter.route('/logout')
-  .get(logout)
-
-userRouter.route('/status')
-  .get(status)
+challengeRouter.route('/:id')
+  .get(getChallenge)
+  .patch(updateChallenge)
+  .delete(deleteChallenge)
