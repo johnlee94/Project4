@@ -16,6 +16,7 @@ const
   User = require('./models/User.js'),
   usersRoutes = require('./routes/users.js'),
   challengeRoutes = require('./routes/challenges.js'),
+  requestRoutes = require('./routes/requests.js'),
   session = require('express-session'),
   MongoDBStore = require('connect-mongodb-session')(session),
 
@@ -48,6 +49,7 @@ app.use(passport.session())
 // routes
 app.use('/users', usersRoutes)
 app.use('/challenges', challengeRoutes)
+app.use('/requests', requestRoutes)
 
 app.get('/', (req, res) => {
   res.sendFile(clientDir + 'index.html')

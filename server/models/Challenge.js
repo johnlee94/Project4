@@ -1,4 +1,4 @@
-const
+  const
   mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   passportLocalMongoose = require('passport-local-mongoose'),
