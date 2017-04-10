@@ -46,7 +46,11 @@ function UserService($q, $timeout, $http) {
     var deferred = $q.defer()
 
     // send a post request to the server
-    $http.post('/users/login', {username: username, password: password})
+    $http.post('/users/login',
+    {
+      username: username,
+       password: password
+     })
       // handle success
       .success(function (data, status) {
         if(status === 200 && data.status){
@@ -91,14 +95,19 @@ function UserService($q, $timeout, $http) {
 
   }
 
-  function signup(username, password) {
+  function signup(username, password, email, name) {
 
     // create a new instance of deferred
     var deferred = $q.defer()
 
     // send a post request to the server
     $http.post('/users/signup',
-      {username: username, password: password})
+      {
+        username: username,
+        password: password,
+        email: email,
+        name: name
+      })
       // handle success
       .success(function (data, status) {
         if(status === 200 && data.status){

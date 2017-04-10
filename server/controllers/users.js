@@ -24,7 +24,7 @@ module.exports = {
       })
     }
 
-    function login (req, res) {
+    function login (req, res, next) {
       passport.authenticate('local', (err, user, info) => {
         if (err) return next(err)
         if (!user) return res.status(401).json({ err: info })

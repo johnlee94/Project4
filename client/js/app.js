@@ -28,10 +28,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/profile.html',
       restricted: true
     })
-    .state('tweets', {
-      url: '/tweets',
-      templateUrl: 'templates/tweets.html',
-      controller: 'tweetsController as tweetsCtrl',
+    .state('challenges', {
+      url: '/challenges',
+      templateUrl: 'templates/challenges.html',
+      controller: 'challengesController as challengesCtrl',
       restricted: true
     })
 })

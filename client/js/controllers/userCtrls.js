@@ -58,7 +58,7 @@ function signupController($state, UserService) {
     vm.disabled = true
 
     // call register from service
-    UserService.signup(vm.signupForm.username, vm.signupForm.password)
+    UserService.signup(vm.signupForm.username, vm.signupForm.password, vm.signupForm.email, vm.signupForm.name)
       // handle success
       .then(function () {
         $state.go('profile')
