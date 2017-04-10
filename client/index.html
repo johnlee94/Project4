@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="myApp" ng-cloak>
+
+<head>
+  <meta charset="utf-8">
+  <title>MEAN Auth</title>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script> -->
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script> -->
+  <script src="/js/angular/angular.js"></script>
+  <script src="/js/angular/angular-ui-router.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/services/user.js"></script>
+  <script src="/js/controllers/userCtrls.js"></script>
+  <script src="/js/controllers/mainCtrl.js"></script>
+  <script src="/js/controllers/tweetsCtrl.js"></script>
+  <script src="/js/directives/navBar.js"></script>
+</head>
+<body ng-controller="MainController">
+  <nav-bar></nav-bar>
+  <ui-view></ui-view>
+
+</body>
+</html>
