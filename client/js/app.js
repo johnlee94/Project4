@@ -40,4 +40,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'challengesController as challengesCtrl',
       restricted: true
     })
+    .state('yelpSearch', {
+      url: '/yelp/new',
+      templateUrl: 'templates/yelpSearchPage.html',
+      controller: 'yelpController as yelpCtrl',
+      restricted: true
+    })
 })

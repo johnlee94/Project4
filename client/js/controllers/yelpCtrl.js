@@ -1,13 +1,5 @@
-module.exports.get = require('./lib/get');
-module.exports.search = require('./lib/search');
-
-var passport  = require('passport'),
-    yelpApiV3 = require("yelp-api-v3");
-
-var yelp      = new yelpApiV3({
-  app_id      : process.env.YELP_ID,
-  app_secret  : process.env.YELP_SECRET
-});
+// module.exports.get = require('./lib/get');
+// module.exports.search = require('./lib/search');
 
 //yelp-fusion api
 // const yelp = require('yelp-fusion');
@@ -44,32 +36,34 @@ yelpController.$inject = ['$state', '$scope', '$http']
 
 function yelpController($state, $scope, $http) {
   var vm = this
+  vm.test = 'secret'
   vm.title = "Use Yelp masterrace..."
   vm.selectedChallenge = {}
-  vm.allChallenges = []
+  vm.allChallenges = [{
+    location: "up yours"
+  }]
   vm.yelpSearch = yelpSearch
-  vm.search = ''
+  vm.search = {}
   vm.selectedCity = ''
   vm.cities = []
 
-  function yelpSearch(req, res) {
+  function yelpSearch() {
     var searchTerm = vm.search.term,
         openNow    = vm.search.open === 'true' ? true : false,
         price      = String(vm.search.price),
-        zipSearch  = vm.search.zip === '' || vm.search.zip.length !== 5 ? '90401' : vm.search.zip;
-
-    console.log('price:', price);
-    yelp.search({term: searchTerm, categories: 'restaurants', location: zipSearch, open_now: openNow, price: price})
-    .then(function (data) {
-      var jsonString = JSON.parse(data);
-      vm.allChallenges.push(jsonString.businesses)
-      // res.render('search2', {bar: jsonString.businesses});
-
-    })
-    .catch(function (err) {
-        console.log('not working')
-        console.error(err);
-    });
+        zipSearch = vm.search.zip
+        // zipSearch  = vm.search.zip === '' || vm.search.zip.length !== 5 ? '90401' : vm.search.zip;
+        console.log('hello')
+        console.log(vm.search)
+        $http({
+          url: 'http://localhost:3000/challenges/api',
+          method: "GET",
+          params: {term: searchTerm, zip: zipSearch, open_now: openNow, price: price}
+        })
+        .then(function(res) {
+          console.log(res.data.businesses)
+          vm.allChallenges.push(res.data.businesses)
+        })
   }
 
   // function yelpSearch(req, res) {
@@ -106,12 +100,3 @@ function yelpController($state, $scope, $http) {
   // the logged in user can be retrieved by reaching up to the MainController using the built-in $scope service.:
   vm.currentUser = $scope.$parent.currentUser
 }
-
-
-
-// function postSearch(req, res) {
-//   // if (req.body.zipSearch === '')
-//   //   res.redirect('search/?term=' + req.body.searchTerm + '&open=' + req.body.openNow + '&price=' + req.body.price);
-//
-//   res.redirect('/search/?term=' + req.body.searchTerm + '&zip=' + req.body.zipSearch + '&open=' + req.body.openNow + '&price=' + req.body.price);
-// }

@@ -9,9 +9,7 @@
     expiration: Number,
     user: {type: mongoose.Schema.Types.ObjectId, ref: "users"},
     menu: String,
-    featured_items: [
-      {picture: String, price: String, caption: String}
-    ],
+    featured_item: {picture: String, price: String, caption: String},
     additional_comments: String,
     public: {type: Boolean, default: false},
     zip: Number,

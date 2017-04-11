@@ -44,6 +44,9 @@
                 <!-- <div class="form-group">
                     <input type="text" class="form-control" name="user" value="{{currentUser._id}}" ng-init="challengesCtrl.newChallenge.user" >{{currentUser._id}}
                   </div> -->
+                  <div class="form-group">
+  <input type="hidden" class="form-control" name="user" value="{{currentUser._id}}" ng-init="challengesCtrl.newChallenge.user = currentUser._id">
+</div>
       <div>
         <button type="submit" class="btn btn-default" ng-disabled="challengesCtrl.disabled">Create Challenge!</button>
       </div>

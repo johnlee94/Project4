@@ -1,0 +1,38 @@
+<div>
+<div class="jumbotron text-center"><h1>Search for Restaurants via YELP!!!</h1></div>
+<h1>{{yelpCtrl.test}}</h1>
+  <div class="row">
+    <div class="col-xs-6">
+      <!-- <label>Zip</label> -->
+      Price<input type="text" ng-model='yelpCtrl.search.price'>
+      Open?<input type="text" ng-model='yelpCtrl.search.open'>
+      Zip<input type="text" ng-model='yelpCtrl.search.zip'>
+      <!-- <select class="form-control" ng-model="yelpCtrl.selectedCity" ng-options="city for city in yelpCtrl.cities"></select> -->
+    </div>
+    <div class="col-xs-6">
+      <label>Search</label>
+      <input type="search" class="form-control" ng-model="yelpCtrl.search.term" placeholder="search...">
+    </div>
+    <button ng-click='yelpCtrl.yelpSearch()'>Button</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Bio</th>
+        <th>Client Date</th>
+        <th class="text-right">Funds</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="challenge in yelpCtrl.allChallenges">
+        <!-- <td>{{challenge.name}}</td> -->
+        <td>{{challenge.location}}</td>
+        <!-- <td>{{challenge.bio}}</td> -->
+        <!-- <td>{{challenge.date}}</td> -->
+        <!-- <td class="text-right">{{challenge.funds}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
