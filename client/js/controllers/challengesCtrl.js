@@ -11,6 +11,7 @@ function challengesController($state, $scope, $http) {
   vm.createChallenge = createChallenge
 
   function createChallenge () {
+    // vm.newChallenge.user = currentUser._id
     $http
       .post('http://localhost:3000/challenges', vm.newChallenge)
       .then(function(res) {

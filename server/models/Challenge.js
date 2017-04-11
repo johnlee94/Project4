@@ -13,7 +13,7 @@
       {picture: String, price: String, caption: String}
     ],
     additional_comments: String,
-    public: {type: Boolean, default: true},
+    public: {type: Boolean, default: false},
     zip: Number,
     location: String,
     category: String,

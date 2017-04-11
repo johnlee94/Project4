@@ -1,29 +1,47 @@
 <div class="col-md-4">
   <h1>New Challenge</h1>
   <!-- <div ng-show="challengesCtrl.error" class="alert alert-danger">{{challengesCtrl.errorMessage}}</div> -->
-  <form class="form" ng-submit="challengesCtrl.createChallenge()">
+  <form class="form" id='challengeForm' ng-submit="challengesCtrl.createChallenge()">
     <div class="form-group">
       <label>Title</label>
-      <input type="text" class="form-control" name="title" ng-model="challengesCtrl.newChallenge.title" required>
+      <input type="text" class="form-control" name="title" placeholder="Tacos at Alberto's" ng-model="challengesCtrl.newChallenge.title" required>
     </div>
     <div class="form-group">
-      <label>Body</label>
-        <input type="textarea" class="form-control" name="body" ng-model="challengesCtrl.newChallenge.body" required>
+      <label for="textarea">Body</label>
+       <textarea name="body" ng-model="challengesCtrl.newChallenge.body" form="challengeForm" cols="30" rows="10" placeholder="Come on Tuesdays for $1.50 per taco!!"></textarea>
+        <!-- <input type="textarea" rows='15' cols='30' class="form-control" name="body" placeholder="Come on Tuesdays for $1.50 per taco!!" ng-model="challengesCtrl.newChallenge.body" required> -->
       </div>
       <div class="form-group">
         <label>Expiration</label>
-          <input type="text" class="form-control" name="expiration" ng-model="challengesCtrl.newChallenge.expiration" required>
+          <input list="lifetimes" class="form-control" name="expiration" placeholder='Time in Hours' ng-model="challengesCtrl.newChallenge.expiration" required>
+          <datalist id='lifetimes'>
+            <option value="12">12 Hours</option>
+            <option value="24">1 Day</option>
+            <option value="48">2 Days</option>
+            <option value="168">1 Week!</option>
+          </datalist>
         </div>
+
         <div class="form-group">
-          <label>menu</label>
-            <input type="text" class="form-control" name="menu" ng-model="challengesCtrl.newChallenge.menu" >
+          <label>Menu</label>
+            <input type="text" class="form-control" name="menu" placeholder="Link to Restaurant's menu" ng-model="challengesCtrl.newChallenge.menu" >
           </div>
           <div class="form-group">
             <label>Additional Comments</label>
-              <input type="textarea" class="form-control" name="additional_comments" ng-model="challengesCtrl.newChallenge.additional_comments" >
+              <input type="text" class="form-control" name="additional_comments" placeholder="Ask for Cilantro" ng-model="challengesCtrl.newChallenge.additional_comments" >
             </div>
+              <div class="form-group">
+              <label>Location</label>
+                <input style='width:500px' type="text" class="form-control" name="address" placeholder="123 Taco Place, Taco City, Taco Land 33333" ng-model="challengesCtrl.newChallenge.location" >
+              </div>
+              <div class="form-group">
+                  <input type="checkbox" class="form-control" name="public" value='true' ng-model="challengesCtrl.newChallenge.public" >Public
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="user" value="{{currentUser._id}}" ng-model="challengesCtrl.newChallenge.user" >{{currentUser._id}}
+                  </div>
       <div>
-        <button type="submit" class="btn btn-default" ng-disabled="challengesCtrl.disabled">Sign Up</button>
+        <button type="submit" class="btn btn-default" ng-disabled="challengesCtrl.disabled">Create Challenge!</button>
       </div>
   </form>
 </div>
