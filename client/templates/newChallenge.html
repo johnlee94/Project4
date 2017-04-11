@@ -1,0 +1,29 @@
+<div class="col-md-4">
+  <h1>New Challenge</h1>
+  <!-- <div ng-show="challengesCtrl.error" class="alert alert-danger">{{challengesCtrl.errorMessage}}</div> -->
+  <form class="form" ng-submit="challengesCtrl.createChallenge()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" ng-model="challengesCtrl.newChallenge.title" required>
+    </div>
+    <div class="form-group">
+      <label>Body</label>
+        <input type="textarea" class="form-control" name="body" ng-model="challengesCtrl.newChallenge.body" required>
+      </div>
+      <div class="form-group">
+        <label>Expiration</label>
+          <input type="text" class="form-control" name="expiration" ng-model="challengesCtrl.newChallenge.expiration" required>
+        </div>
+        <div class="form-group">
+          <label>menu</label>
+            <input type="text" class="form-control" name="menu" ng-model="challengesCtrl.newChallenge.menu" >
+          </div>
+          <div class="form-group">
+            <label>Additional Comments</label>
+              <input type="textarea" class="form-control" name="additional_comments" ng-model="challengesCtrl.newChallenge.additional_comments" >
+            </div>
+      <div>
+        <button type="submit" class="btn btn-default" ng-disabled="challengesCtrl.disabled">Sign Up</button>
+      </div>
+  </form>
+</div>

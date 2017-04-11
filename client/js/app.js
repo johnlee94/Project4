@@ -34,4 +34,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'challengesController as challengesCtrl',
       restricted: true
     })
+    .state('newChallenge', {
+      url: '/challenges/new',
+      templateUrl: 'templates/newChallenge.html',
+      controller: 'challengesController as challengesCtrl',
+      restricted: true
+    })
 })

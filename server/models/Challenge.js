@@ -4,6 +4,7 @@
   passportLocalMongoose = require('passport-local-mongoose'),
   challengeSchema = new Schema({
     title: String,
+    body: String,
     created_at: {type: Date, default: Date.now},
     expiration: Number,
     user: {type: mongoose.Schema.Types.ObjectId, ref: "users"},
