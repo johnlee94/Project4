@@ -18,6 +18,7 @@ function getChallenges(req, res) {
 }
 
 function createChallenge(req, res) {
+  console.log(req.body)
   var challenge = new Challenge(req.body)
 
   challenge.save(function(err) {
