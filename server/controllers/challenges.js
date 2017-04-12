@@ -41,12 +41,12 @@ function getChallenge(req, res) {
 function updateChallenge(req, res) {
   var id = req.params.id
 
-  Player.find({_id: id}, function(err, challenge) {
+  Challenge.find({_id: id}, function(err, challenge) {
     if (err) throw error
 
     challenge.title = req.body.title
     challenge.menu = req.body.menu
-    challenge.featured_items = req.body.featured_items
+    challenge.featured_item = req.body.featured_item
     challenge.additional_comments = req.body.additional_comments
     challenge.public = req.body.public
     challenge.zip = req.body.zip

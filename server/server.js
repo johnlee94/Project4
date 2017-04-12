@@ -24,6 +24,8 @@ mongoose.connect(mongoUrl, (err) => {
   console.log(err || `Connected to MongoDB.`)
 })
 
+require('dotenv').config();
+
 // will store session information as a 'sessions' collection in Mongo
 const store = new MongoDBStore({
   uri: mongoUrl,
