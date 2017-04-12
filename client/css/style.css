@@ -5,3 +5,11 @@
   margin: 0;
   /*border-radius: 10px !important;*/
 }
+
+#searchContainer {
+  border: 3px black solid
+}
+
+.selected {
+  background-color: red
+}

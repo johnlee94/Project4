@@ -32,23 +32,35 @@
 angular.module('myApp')
   .controller('yelpController', yelpController)
 
-yelpController.$inject = ['$state', '$scope', '$http']
+yelpController.$inject = ['$state', '$scope', '$http', '$localStorage']
 
-function yelpController($state, $scope, $http) {
+function yelpController($state, $scope, $http, $localStorage) {
   var vm = this
-  vm.openNow = 'true'
-  vm.test = 'secret'
-  vm.title = "Use Yelp masterrace..."
   vm.selectedChallenge = {}
   vm.allChallenges = []
   vm.yelpSearch = yelpSearch
   vm.search = {}
-  vm.selectedCity = ''
-  vm.cities = []
+  vm.selectLocation = selectLocation
+  vm.isSelected = false
+  vm.test = $localStorage.getObject('selectedChallenge')
+
+  function selectLocation(selectedLocation) {
+    for (var i = 0; i < vm.allChallenges.length; i++) {
+      var location = vm.allChallenges[i]
+      location.selected = false
+      if(location.image_url == selectedLocation.image_url) {
+        vm.selectedChallenge = location
+        location.selected = !location.selected
+        $localStorage.setObject('selectedChallenge', vm.selectedChallenge)
+      } else {
+        location.selected = false
+      }
+    }
+  }
 
   function yelpSearch() {
     var searchTerm = vm.search.term,
-        openNow    = vm.search.open === 'true' ? true : false,
+        openNow    = vm.search.open
         price      = String(vm.search.price),
         zipSearch = vm.search.zip
         // zipSearch  = vm.search.zip === '' || vm.search.zip.length !== 5 ? '90401' : vm.search.zip;
@@ -64,38 +76,24 @@ function yelpController($state, $scope, $http) {
           vm.allChallenges = res.data.businesses
         })
   }
-
-  // function yelpSearch(req, res) {
-  //   var searchTerm = vm.search.term,
-  //       openNow    = req.query.open === 'true' ? true : false,
-  //       price      = String(req.query.price),
-  //       zipSearch  = req.query.zip === '' || req.query.zip.length !== 5 ? '90401' : req.query.zip;
-  //
-  //   console.log('price:', price);
-  //   yelp.search({term: searchTerm, categories: 'bars', location: zipSearch, open_now: openNow, price: price})
-  //   .then(function (data) {
-  //     var jsonString = JSON.parse(data);
-  //     vm.allChallenges.push()
-  //     res.render('search2', {bar: jsonString.businesses});
-  //
-  //   })
-  //   .catch(function (err) {
-  //       console.log('not working')
-  //       console.error(err);
-  //   });
-  // }
-
-  // function createChallenge () {
-  //   // vm.newChallenge.user = currentUser._id
-  //   $http
-  //     .post('http://localhost:3000/challenges', vm.newChallenge)
-  //     .then(function(res) {
-  //       console.log(vm.newChallenge)
-  //       vm.newChallenge = {}
-  //       vm.challenges.push(res.data.challenge)
-  //     })
-  // }
-
   // the logged in user can be retrieved by reaching up to the MainController using the built-in $scope service.:
   vm.currentUser = $scope.$parent.currentUser
 }
+
+angular.module('myApp')
+.factory('$localStorage', ['$window', function($window) {
+    return {
+      set: function(key, value) {
+          $window.localStorage[key] = value;
+          },
+          get: function(key, defaultValue) {
+            return $window.localStorage[key] || defaultValue;
+          },
+          setObject: function(key, value) {
+            $window.localStorage[key] = JSON.stringify(value);
+          },
+          getObject: function(key) {
+            return JSON.parse($window.localStorage[key] || '{}');
+          }
+        }
+}])

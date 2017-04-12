@@ -13,7 +13,7 @@ function search(req, res) {
       // openNow    = req.query.open === true ? true : false,
       openNow    = req.query.open === 'true' ? true : false,
       price      = String(req.query.price),
-      zipSearch = req.query.zip
+      zipSearch = req.query.location
       // zipSearch  = req.query.zip === '' || req.query.zip.length !== 5 ? '90401' : req.query.zip;
 
   console.log(process.env.YELP_ID)
