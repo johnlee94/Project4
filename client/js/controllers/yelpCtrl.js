@@ -36,12 +36,11 @@ yelpController.$inject = ['$state', '$scope', '$http']
 
 function yelpController($state, $scope, $http) {
   var vm = this
+  vm.openNow = 'true'
   vm.test = 'secret'
   vm.title = "Use Yelp masterrace..."
   vm.selectedChallenge = {}
-  vm.allChallenges = [{
-    location: "up yours"
-  }]
+  vm.allChallenges = []
   vm.yelpSearch = yelpSearch
   vm.search = {}
   vm.selectedCity = ''
@@ -58,11 +57,11 @@ function yelpController($state, $scope, $http) {
         $http({
           url: 'http://localhost:3000/challenges/api',
           method: "GET",
-          params: {term: searchTerm, zip: zipSearch, open_now: openNow, price: price}
+          params: {term: searchTerm, location: zipSearch, open: openNow, price: price}
         })
         .then(function(res) {
           console.log(res.data.businesses)
-          vm.allChallenges.push(res.data.businesses)
+          vm.allChallenges = res.data.businesses
         })
   }
 

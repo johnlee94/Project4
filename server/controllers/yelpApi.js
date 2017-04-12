@@ -10,6 +10,7 @@ var yelp      = new Yelp({
 function search(req, res) {
   console.log(req.query)
   var searchTerm = req.query.term,
+      // openNow    = req.query.open === true ? true : false,
       openNow    = req.query.open === 'true' ? true : false,
       price      = String(req.query.price),
       zipSearch = req.query.zip
@@ -22,13 +23,11 @@ function search(req, res) {
   console.log('price:', price);
 
   // open_now: openNow,
-  yelp.search({location: '90010'})
+  yelp.search({location: zipSearch, open_now: openNow, term: searchTerm, price:price, limit:10})
   .then(function (data) {
-    console.log(data)
-    // var jsonString = JSON.parse(data);
-    // res.json({businesses: jsonString.businesses});
+    var jsonString = JSON.parse(data);
+    res.json({businesses: jsonString.businesses});
     // console.log(jsonString.businesses)
-
   })
   .catch(function (err) {
       console.log('not working')
