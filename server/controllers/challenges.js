@@ -11,7 +11,7 @@ module.exports = {
 // GET all players (json)
 function getChallenges(req, res) {
   Challenge.find(function(err, challenges) {
-    if (err) res.json({message: 'No players found currently'})
+    if (err) res.json({message: 'No challenges found currently'})
 
     res.json({challenges: challenges})
   })

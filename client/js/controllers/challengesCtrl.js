@@ -7,8 +7,6 @@ function challengesController($state, $scope, $http, $localStorage) {
   var vm = this
   vm.title = "All of the challenges!"
   vm.selectedChallenge = $localStorage.getObject('selectedChallenge')
-  // vm.stage = $localStorage.getObject('selectedChallenge')
-  // vm.selectedChallenge = JSON.parse(stage)
   vm.newChallenge = {}
   vm.selectedAddress = vm.selectedChallenge.location.display_address[0] + ", " +  vm.selectedChallenge.location.display_address[1]
   vm.challenges = []

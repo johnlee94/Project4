@@ -46,4 +46,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'yelpController as yelpCtrl',
       restricted: true
     })
+    .state('allPublicChallenges', {
+      url: '/challenges/all',
+      templateUrl: 'templates/allPublicChallenges.html',
+      controller: 'publicController as publicCtrl',
+      restricted: true
+    })
+    .state('showChallenge', {
+      url: '/challenge',
+      templateUrl: 'templates/showChallenge.html',
+      controller: 'showChallengeController as showChallengeCtrl',
+      restricted: true
+    })
 })

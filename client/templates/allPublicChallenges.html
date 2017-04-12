@@ -1,0 +1,12 @@
+<div>
+  <h2>All Public Challenges</h2>
+  <div ng-repeat='challenge in publicCtrl.allChallenges'>
+    <div>
+      <a ui-sref="showChallenge" ng-click='publicCtrl.passChallengeId(challenge)'>{{challenge.title}}</a>
+      challenged by:
+      Price: {{challenge.price_level}}
+      Rating: {{challenge.rating}}
+      Expires in: {{challenge.expiration}}
+    </div>
+  </div>
+</div>
