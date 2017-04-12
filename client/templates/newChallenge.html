@@ -6,17 +6,17 @@
       <label>Title</label>
       <input type="text" class="form->control" name="title" placeholder="Tacos at Alberto's" ng-model="challengesCtrl.newChallenge.title" required>
     </div>
-    <!-- <div class="form-group">
-      <label>User</label>
-      <input type="text" class="form->control" name="title" placeholder="Tacos at Alberto's" ng-init="{{currentUser._id}}" ng-model="challengesCtrl.newChallenge.user" required>
-    </div> -->
+    <div>Location: {{challengesCtrl.selectedChallenge.name}}</div>
+    <hr>
+    <img id='yelpsGeneratedPic' src="{{challengesCtrl.selectedChallenge.image_url}}" alt="Yelp's Image">
     <div class="form-group">
       <label for="textarea">Body</label>
-       <textarea name="body" ng-model="challengesCtrl.newChallenge.body" form="challengeForm" cols="30" rows="10" placeholder="Come on Tuesdays for $1.50 per taco!!"></textarea>
+      <br>
+       <textarea name="body" ng-model="challengesCtrl.newChallenge.body" form="challengeForm" cols="30" rows="5" placeholder="Come on Tuesdays for $1.50 per taco!!"></textarea>
         <!-- <input type="textarea" rows='15' cols='30' class="form-control" name="body" placeholder="Come on Tuesdays for $1.50 per taco!!" ng-model="challengesCtrl.newChallenge.body" required> -->
       </div>
       <div class="form-group">
-        <label>Expiration</label>
+        <label>Expires In:</label>
           <input list="lifetimes" class="form-control" name="expiration" placeholder='Time in Hours' ng-model="challengesCtrl.newChallenge.expiration" required>
           <datalist id='lifetimes'>
             <option value="12">12 Hours</option>
@@ -32,19 +32,22 @@
           </div>
           <div class="form-group">
             <label>Additional Comments</label>
-              <input type="text" class="form-control" name="additional_comments" placeholder="Ask for Cilantro" ng-model="challengesCtrl.newChallenge.additional_comments" >
+              <input type="text" class="form-control" name="additional_comments" placeholder="#AskForCilantro" ng-model="challengesCtrl.newChallenge.additional_comments" >
             </div>
               <div class="form-group">
-              <label>Location</label>
-                <input style='width:500px' type="text" class="form-control" name="address" placeholder="123 Taco Place, Taco City, Taco Land 33333" ng-model="challengesCtrl.newChallenge.location" ng-init='challengesCtrl.newChallenge.location = "{{challengesCtrl.selectedAddress}}"' value="{{challengesCtrl.selectedAddress}}" >
-                  {{challengesCtrl.selectedChallenge.location}}
+              <label>Location Address:</label>
+                <input style='width:500px' type="text" class="form-control" name="address" placeholder="123 Taco Place, Taco City, Taco Land 33333" ng-model="challengesCtrl.newChallenge.location" ng-init='challengesCtrl.newChallenge.location = "{{challengesCtrl.selectedAddress}}"' value="{{challengesCtrl.selectedAddress}}" required>
               </div>
-              <div ng-repeat='open in openNow'>
+              <div>Price Level: {{challengesCtrl.selectedChallenge.price}}</div>
+              <div>Rating: {{challengesCtrl.selectedChallenge.rating}}</div>
+
                   <input type="checkbox" class="form-control" name="public" value='true' ng-model="challengesCtrl.newChallenge.public" >Public
+                  <br>
+
+                Show Phone Number: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
+                <div ng-show="checked">
+                  {{challengesCtrl.selectedChallenge.display_phone}}
                 </div>
-                <!-- <div class="form-group">
-                    <input type="text" class="form-control" name="user" value="{{currentUser._id}}" ng-init="challengesCtrl.newChallenge.user" >{{currentUser._id}}
-                  </div> -->
                   <div class="form-group">
   <input type="hidden" class="form-control" name="user" value="{{currentUser._id}}" ng-init="challengesCtrl.newChallenge.user = currentUser._id">
 </div>
@@ -52,5 +55,7 @@
         <button type="submit" class="btn btn-default" ng-disabled="challengesCtrl.disabled">Create Challenge!</button>
       </div>
   </form>
-  {{challengesCtrl.selectedChallenge.rating}}
+  {{challengesCtrl.selectedChallenge}}
+  <hr>
+  About to post: {{challengesCtrl.newChallenge}}
 </div>

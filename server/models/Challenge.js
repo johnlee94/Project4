@@ -15,6 +15,9 @@
     zip: Number,
     location: String,
     category: String,
+    phone: String,
+    rating: String,
+    name: String,
     price_level: String,
     hours: String
   })

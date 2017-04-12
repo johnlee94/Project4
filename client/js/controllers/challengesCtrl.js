@@ -16,6 +16,10 @@ function challengesController($state, $scope, $http, $localStorage) {
 
   function createChallenge () {
     // vm.newChallenge.user = currentUser._id
+    vm.newChallenge.phone = vm.selectedChallenge.display_phone
+    vm.newChallenge.rating = vm.selectedChallenge.rating
+    vm.newChallenge.name = vm.selectedChallenge.name
+    vm.newChallenge.price_level = vm.selectedChallenge.price
     $http
       .post('http://localhost:3000/challenges', vm.newChallenge)
       .then(function(res) {
