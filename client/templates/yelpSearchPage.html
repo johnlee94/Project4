@@ -1,6 +1,6 @@
 <div>
-<div class="jumbotron text-center"><h1>Search for Restaurants via YELP!!!</h1></div>
-  <div class="row">
+<!-- <div class="jumbotron text-center"><h1>Search Locations</h1></div> -->
+  <!-- <div class>
 
     <div class="col-xs-6">
       <label>Search</label>
@@ -16,18 +16,59 @@
   </select>
 </div>
 
-<div class="form-group">
+<div class="form-group checkbox">
     <input type="checkbox" class="form-control" name="public" ng-model='yelpCtrl.search.open' value='true' >Open Now
+
   </div>
 
-      <!-- Open?<input type="text" ng-model='yelpCtrl.search.open'> -->
-      Zip<input type="text" ng-model='yelpCtrl.search.zip'>
+      <!- Open?<input type="text" ng-model='yelpCtrl.search.open'> -->
+      <!-- Zip<input type="text" ng-model='yelpCtrl.search.zip'>
 
 
     <button ng-click='yelpCtrl.yelpSearch()'>Search</button>
     <button><a ui-sref="newChallenge">Create Challenge!</a></button>
 
+  </div> -->
+
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Select a Location</legend>
+
+      <div class="col-xs-6">
+        <input type="search" class="form-control" ng-model="yelpCtrl.search.term" placeholder="tacos..">
+      </div>
+
+      <a ng-click='yelpCtrl.yelpSearch()' class="btn btn-success">Search</a>
+
+
+      <div>
+      Price Level: <select name="pricelevels" ng-model="yelpCtrl.search.price">
+      <option value="1">$</option>
+      <option value="2">$$</option>
+      <option value="3">$$$</option>
+      <option value="4">$$$$</option>
+    </select>
   </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model='yelpCtrl.search.open' value='true' >Open Now
+            </label>
+          </div>
+
+          <div class="col-xs-6">
+            <label>Zip</label>
+          <input type="text" ng-model='yelpCtrl.search.zip'>
+        </div>
+
+
+
+
+          <button type="submit" ui-sref="newChallenge" class="btn btn-primary">Create Challenge!</button>
+
+    </fieldset>
+  </form>
+
   <table class="table table-striped" border='2px'>
     <thead>
       <tr>

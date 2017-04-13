@@ -1,7 +1,70 @@
 <div>
-  <div ng-if="currentUser">Logged in user: {{ currentUser.username }}</div>
 
-  <ul>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand" id='brandSpace' ui-sref="home"><img id='brandImage' src="http://i.imgur.com/ZSMBDxy.png" alt=""></div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+        <li><a ui-sref="allPublicChallenges">All Public Challenges <span class="sr-only">(current)</span></a></li>
+        <li><a ui-sref="yelpSearch">New Challenge!</a></li>
+        <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->
+      </ul>
+      <!-- <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+
+      <ul class="nav navbar-nav navbar-right" ng-if='currentUser'>
+        <li ng-if='currentUser' class="dropdown">
+          <a ng-if="currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ currentUser.username }} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            <li ng-if="currentUser"><a ui-sref="yelpSearch">New Challenge!</a></li>
+            <li ng-if="currentUser"><a ui-sref="profile">Profile</a></li>
+            <li class="divider"></li>
+            <li ng-if="currentUser"><a ui-sref="logout">Log Out</a></li>
+          </li>
+        </ul>
+      </ul>
+
+    <ul class="nav navbar-nav navbar-right" ng-if='!currentUser'>
+        <li class="dropdown">
+          <a ui-sref="login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="signup">Sign Up</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+  <!-- <div ng-if="currentUser">Hello, {{ currentUser.username }}</div> -->
+
+  <!-- <ul>
     <li><a ui-sref="home">Home</a></li>
     <li ng-if="!currentUser"><a ui-sref="login">Log In</a></li>
     <li ng-if="!currentUser"><a ui-sref="signup">Sign Up</a></li>
@@ -10,5 +73,5 @@
     <li ng-if="currentUser"><a ui-sref="newChallenge">New Challenge!</a></li>
     <li ng-if="currentUser"><a ui-sref="yelpSearch">Search yelp!</a></li>
     <li ng-if="currentUser"><a ui-sref="allPublicChallenges">All Public Challenges</a></li>
-  </ul>
+  </ul> -->
 </div>
