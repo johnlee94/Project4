@@ -1,5 +1,6 @@
 <div class="col-md-4">
   <h1>New Challenge</h1>
+  <hr>
   <!-- <div ng-show="challengesCtrl.error" class="alert alert-danger">{{challengesCtrl.errorMessage}}</div> -->
   <form class="form" id='challengeForm' ng-submit="challengesCtrl.createChallenge()">
     <div class="form-group">
@@ -7,6 +8,12 @@
       <input type="text" class="form->control" name="title" placeholder="Tacos at Alberto's" ng-model="challengesCtrl.newChallenge.title" required>
     </div>
     <div>Location: {{challengesCtrl.selectedChallenge.name}}</div>
+    <div>Price Level: {{challengesCtrl.selectedChallenge.price}}</div>
+    <div>Rating: {{challengesCtrl.selectedChallenge.rating}}</div>
+    Show Phone Number: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
+    <div ng-show="checked">
+      {{challengesCtrl.selectedChallenge.display_phone}}
+    </div>
     <hr>
     <img id='yelpsGeneratedPic' src="{{challengesCtrl.selectedChallenge.image_url}}" alt="Yelp's Image">
     <div class="form-group">
@@ -38,16 +45,14 @@
               <label>Location Address:</label>
                 <input style='width:500px' type="text" class="form-control" name="address" placeholder="123 Taco Place, Taco City, Taco Land 33333" ng-model="challengesCtrl.newChallenge.location" ng-init='challengesCtrl.newChallenge.location = "{{challengesCtrl.selectedAddress}}"' value="{{challengesCtrl.selectedAddress}}" required>
               </div>
-              <div>Price Level: {{challengesCtrl.selectedChallenge.price}}</div>
-              <div>Rating: {{challengesCtrl.selectedChallenge.rating}}</div>
 
-                  <input type="checkbox" class="form-control" name="public" value='true' ng-model="challengesCtrl.newChallenge.public" >Public
-                  <br>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model='challengesCtrl.newChallenge.public' value='true' >Public
+                </label>
+              </div>
 
-                Show Phone Number: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br />
-                <div ng-show="checked">
-                  {{challengesCtrl.selectedChallenge.display_phone}}
-                </div>
+
                   <div class="form-group">
   <input type="hidden" class="form-control" name="user" value="{{currentUser._id}}" ng-init="challengesCtrl.newChallenge.user = currentUser._id">
 </div>
