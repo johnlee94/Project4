@@ -20,6 +20,6 @@ function publicController($state, $scope, $http, $localStorage) {
 getAllChallenges()
 
   function passChallengeId(challenge) {
-    $localStorage.setObject('challenge', {challenge : challenge})
+    $localStorage.setObject('challenge', challenge)
   }
 }
