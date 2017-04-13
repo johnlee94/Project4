@@ -34,11 +34,19 @@
     <fieldset>
       <legend>1. Search a Location:</legend>
 
-      <div class="col-xs-6">
-        <label>Business Name:</label>
+      <blockquote style='text-align:center'>
+      <p>"First we eat, then we do everything else."</p>
+      <small>by <cite title="Source Title">M.F.K. Fisher</cite></small>
+      </blockquote>
+      <br>
+
+      <div >
+        <label style='display:block'>Search Challenge..</label>
+        <div style='display:inline-block;float:left'>
         <input type="search" class="form-control" ng-model="yelpCtrl.search.term" placeholder="tacos.." style='display:inline-block' required>
       </div>
-      <a ng-click='yelpCtrl.yelpSearch()' style='display:inline-block'class="btn btn-success">Search</a>
+      </div>
+      <a ng-click='yelpCtrl.yelpSearch()' style="display:inline-block;float:left;margin-left:5px"class="btn btn-success">Search</a>
 
       <br>
       <br>
@@ -59,7 +67,7 @@
             </label>
           </div>
 
-          <div class="col-xs-6">
+          <div >
             <label>Zip:</label>
           <input type="text" ng-model='yelpCtrl.search.zip'>
         </div>
@@ -67,7 +75,7 @@
 
 
 
-          <button type="submit" ui-sref="newChallenge" class="btn btn-primary">Create Challenge!</button>
+
 
     </fieldset>
   </form>
@@ -76,10 +84,7 @@
   <br>
 
 
-  <blockquote>
-  <p>"First we eat, then we do everything else."</p>
-  <small>by <cite title="Source Title">M.F.K. Fisher</cite></small>
-  </blockquote>
+
 
 <br>
 <br>
@@ -88,7 +93,7 @@
       <legend>2. Select a Location:</legend>
     </form>
 
-  <table class="table table-striped" border='2px'>
+  <table class="table" border='2px'>
     <thead>
       <tr>
         <th>Name</th>
@@ -112,4 +117,6 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <button type="submit" ui-sref="newChallenge" class="btn btn-primary">Create Challenge!</button>
 </div>

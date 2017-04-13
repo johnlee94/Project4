@@ -1,6 +1,6 @@
 const
   port = process.env.PORT || 3000,
-  mongoUrl = process.env.MONGODB_URL || 'mongodb://localhost/grubking',
+  mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/grubking',
   clientDir = process.env.PWD + '/client/'
   express = require('express'),
   app = express(),
